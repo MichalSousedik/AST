@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="templateTechnik.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+        <f:metadata>
+
+        </f:metadata>
+
+        <div class="w3-panel w3-center w3-margin">
+            <c:if test="#{navigate.infinity()}">
+                <h2 class="w3-center w3-red" >Žádná trasa neexistuje.</h2>
+            </c:if>
+
+            <c:if test="#{not navigate.infinity()}">
+                Start: #{navigate.start}
+                <br></br>
+
+                <c:forEach var="city" items="#{navigate.trasa}">
+                    <c:if test="#{not navigate.compare(city.nazev)}">
+                        #{city.nazev} ->
+                    </c:if>
+                    <c:if test="#{ navigate.compare(city.nazev)}">
+                        #{city.nazev} 
+                    </c:if>
+
+
+                </c:forEach>
+                <br></br>
+
+                Cíl: #{navigate.cil}
+
+                <br></br>
+                <br></br>
+                Celkový čas: #{navigate.time} minut.
+            </c:if>
+
+            <hr></hr>
+            <h:button value="Zpět"  class="w3-btn w3-theme-d2" style="margin-top:0.5em" outcome="indexTechnik.xhtml"/>
+        </div>  
+
+
+
+    </ui:define>
+</ui:composition>
+
+

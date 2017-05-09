@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css"/>
+
+
+    </h:head>
+    <h:body>
+        <f:view transient="true">
+            <div class="w3-sidebar w3-bar-block   w3-theme  " style="width:10em">
+                <h5 class="w3-bar-item" style='margin-bottom: 1.15em'>Menu</h5>
+                <c:if test="#{view.viewId == '/Dispecer/indexDispecer.xhtml'}">
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/indexDispecer.xhtml" class="w3-bar-item w3-button w3-light-grey w3-hover-light-grey ">Úvodní strana</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Mesto/indexMesto.xhtml" class="w3-bar-item w3-button w3-hover-light-grey">Město</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Trasa/indexTrasa.xhtml" class="w3-bar-item w3-button w3-hover-light-grey">Trasa</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Vyjezd/indexVyjezd.xhtml" class="w3-bar-item w3-button w3-hover-light-grey">Vyjezd</a>
+                    <h:form>
+                        <h:commandButton class="w3-bar-item w3-button w3-hover-light-grey w3-theme " value="Odhlasit" action="#{makeSession.doLogout()}"></h:commandButton>
+                    </h:form>
+                </c:if>
+
+                <c:if test="#{view.viewId == '/Dispecer/Mesto/indexMesto.xhtml'}">
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/indexDispecer.xhtml" class="w3-bar-item w3-button  w3-hover-light-grey">Úvodní strana</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Mesto/indexMesto.xhtml" class="w3-bar-item w3-button w3-light-grey w3-hover-light-grey">Město</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Trasa/indexTrasa.xhtml" class="w3-bar-item w3-button w3-hover-light-grey">Trasa</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Vyjezd/indexVyjezd.xhtml" class="w3-bar-item w3-button w3-hover-light-grey">Vyjezd</a>
+                       <h:form>
+                        <h:commandButton class="w3-bar-item w3-button w3-hover-light-grey w3-theme " value="Odhlasit" action="#{makeSession.doLogout()}"></h:commandButton>
+                    </h:form>
+                </c:if>
+
+                <c:if test="#{view.viewId == '/Dispecer/Trasa/indexTrasa.xhtml'}">
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/indexDispecer.xhtml" class="w3-bar-item w3-button  w3-hover-light-grey">Úvodní strana</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Mesto/indexMesto.xhtml" class="w3-bar-item w3-button  w3-hover-light-grey">Město</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Trasa/indexTrasa.xhtml" class="w3-bar-item w3-button w3-light-grey w3-hover-light-grey">Trasa</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Vyjezd/indexVyjezd.xhtml" class="w3-bar-item w3-button w3-hover-light-grey">Vyjezd</a>
+                       <h:form>
+                        <h:commandButton class="w3-bar-item w3-button w3-hover-light-grey w3-theme " value="Odhlasit" action="#{makeSession.doLogout()}"></h:commandButton>
+                    </h:form>
+                </c:if>
+                <c:if test="#{view.viewId == '/Dispecer/Vyjezd/indexVyjezd.xhtml'}">
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/indexDispecer.xhtml" class="w3-bar-item w3-button  w3-hover-light-grey">Úvodní strana</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Mesto/indexMesto.xhtml" class="w3-bar-item w3-button  w3-hover-light-grey">Město</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Trasa/indexTrasa.xhtml" class="w3-bar-item w3-button  w3-hover-light-grey">Trasa</a>
+                    <a href="/ServiceTechnicAPI/faces/Dispecer/Vyjezd/indexVyjezd.xhtml" class="w3-bar-item w3-button  w3-light-grey w3-hover-light-grey">Vyjezd</a>
+                       <h:form>
+                        <h:commandButton class="w3-bar-item w3-button w3-hover-light-grey w3-theme " value="Odhlasit" action="#{makeSession.doLogout()}"></h:commandButton>
+                    </h:form> 
+                </c:if>
+
+            </div>
+            <div class="w3-container w3-center w3-theme-d5 " style="margin-left:10em">
+                <ui:insert name="header"> <h1>AST</h1></ui:insert>  
+            </div>
+            <div class="w3-container w3-center " style="margin-left:10em">
+                <ui:insert name="content"></ui:insert>  
+            </div>
+            <div class="w3-container w3-theme-l2  w3-center " style="margin-left:10em; margin-top:3em;">
+                <h4>AST Corporation</h4> 
+            </div>
+
+
+        </f:view>
+
+    </h:body>
+</html>
+

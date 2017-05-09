@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Přidat město</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templateDispecer.xhtml">
+            <ui:define name="content">
+
+            <h2 class="w3-center w3-text-theme">Přidat město</h2>
+              
+               <h:form class="w3-container">
+                
+                <label class="w3-text-theme"><b>Název</b></label>
+                <h:inputText id="name" value="#{addMesto.name}"
+                             required="true"
+                             requiredMessage="empty"
+                             class="w3-input w3-border ">
+                    <f:validateLength minimum="3" />
+                </h:inputText>
+
+                <h:message for="name" style="color: red"/>
+                <h:commandButton value="Přidat záznam" action="#{addMesto.add()}" class="w3-btn w3-theme-d2" style="margin-top:0.5em"/>
+                <h:button value="Zpět"  class="w3-btn w3-theme-d2" style="margin-top:0.5em; margin-left:0.5em" outcome="indexMesto.xhtml"/>
+        </h:form>
+               
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

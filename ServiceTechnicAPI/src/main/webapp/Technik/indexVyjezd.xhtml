@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Výjezd</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="templateTechnik.xhtml">
+            <ui:define name="content">
+                <div class=" w3-container  " >
+                    <c:if test="#{empty indexVyjezd.getTechnikVyjezd(loginTechnik.tech)}">
+                        <h2 class="w3-center w3-red" >Némáte dnes žádné výjezdy</h2>
+                    </c:if>
+                    <c:if test="#{not empty indexVyjezd.getTechnikVyjezd(loginTechnik.tech)}">
+                        <h3 class="w3-center w3-text-theme" > Výjezdy: </h3>
+                        <h:dataTable var="v" value="#{indexVyjezd.getTechnikVyjezd(loginTechnik.tech)}" border="1" 
+                                     rendered="#{not empty indexVyjezd.getTechnikVyjezd(loginTechnik.tech) }"
+                                     class="w3-table w3-centered w3-text-theme"   
+                                     >
+                            <h:column>
+                                <f:facet name="header" class="w3-red"></f:facet>
+                                #{indexVyjezd.iterator}.
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header" class="w3-red">Technik</f:facet>
+                                    #{v.allIdDispecer()}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header" class="w3-red">Dispečer</f:facet>
+                                    #{v.allIdDispecer()}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header" class="w3-red">Zákazník</f:facet>
+                                    #{v.zakaznik}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header" class="w3-red">Popis</f:facet>
+                                    #{v.popis}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header" class="w3-red">Město</f:facet>
+                                    #{v.idMesto}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header" class="w3-red">Hodina</f:facet>
+                                    #{v.hodina} : 00
+                            </h:column>
+                            <h:column>
+                                <h:form>
+                                    <f:facet name="header" class="w3-red">Dokončit výjezd</f:facet>
+                                    <h:commandButton value="Dokončit výjezd" action="#{indexVyjezd.delete(v.idVyjezd)}"/>
+                                </h:form>
+
+                            </h:column>
+                        </h:dataTable>
+                             <h:form>
+                <f:facet name="header" class="w3-red">Navigovat k dalšímu výjezdu</f:facet>
+                <h:button value="Navigovat k dalšímu výjezdu" class="w3-button w3-block w3-theme-d2"     outcome="navigovatKam.xhtml"/>
+            </h:form> 
+
+                    </c:if>
+                
+
+
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+
+
+
+    </h:body>
+</html>

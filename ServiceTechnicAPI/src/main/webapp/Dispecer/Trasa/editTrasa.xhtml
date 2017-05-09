@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Upravit Trasu</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templateDispecer.xhtml">
+            <ui:define name="content">
+
+
+                <f:metadata>
+                    <f:viewParam name="custId" value="#{editTrasa.trasaId}"/>
+                </f:metadata>
+
+                <h2 class="w3-center w3-text-theme">Upravit trasu</h2>
+                <h:form>
+                <table class="w3-table-all w3-centered">
+                    <tr>
+                        <td>
+                            Start:
+                        </td>
+                        <td>
+                            <h:selectOneMenu value="#{editTrasa.startIdNew}" class="w3-select w3-border" converter="#{categoryConverterBean}" >
+                                <c:forEach var="city" items="#{indexMesto.mesto}">
+                                    <f:selectItem itemValue="#{city}" itemLabel="#{city.nazev}" />
+                                </c:forEach> 
+
+                            </h:selectOneMenu>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cíl:
+                        </td>
+                        <td>
+                            <h:selectOneMenu value="#{editTrasa.cilIdNew}" class="w3-select w3-border" converter="#{categoryConverterBean}" >
+                                <c:forEach var="city" items="#{indexMesto.mesto}">
+                                    <f:selectItem itemValue="#{city}" itemLabel="#{city.nazev}" />
+                                </c:forEach> 
+
+                            </h:selectOneMenu>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Čas:
+                        </td>
+                        <td>
+                            <h:inputText class="w3-input w3-border" value="#{editTrasa.casNew}">
+                            </h:inputText>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+
+                
+                    <div class="w3-panel w3-center ">
+                        <h:commandButton value="Upravit"  class="w3-btn w3-theme-d2" action="#{editTrasa.edit()}">
+                            <f:param name="custId" value="#{editTrasa.trasaId}"/>
+                        </h:commandButton>
+                        <h:button value="Zpět"  class="w3-btn w3-theme-d2" style="margin-left:1em" outcome="indexTrasa.xhtml"/>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

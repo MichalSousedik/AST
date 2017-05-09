@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Trasy</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templateDispecer.xhtml">
+            <ui:define name="content">
+
+            <div class=" w3-container  " >
+                <c:if test="#{empty indexTrasa.trasa}">
+                    <h2 class="w3-center w3-red" >Žádné trasy</h2>
+                </c:if>
+                <c:if test="#{not empty indexTrasa.trasa}">
+                <h3 class="w3-center w3-text-theme" > Trasy: </h3>
+                <h:dataTable var="t" value="#{indexTrasa.trasa}" border="1" 
+                             rendered="#{not empty indexTrasa.trasa}"
+                             class="w3-table w3-centered w3-text-theme"   
+                             >
+
+                    
+                    <h:column>
+                        <f:facet name="header" class="w3-red">Start</f:facet>
+                            #{t.idStart}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header" class="w3-red">Cíl</f:facet>
+                            #{t.idCil}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header" class="w3-red">Čas</f:facet>
+                            #{t.cas} minut
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header" class="w3-red">Upravit záznam</f:facet>
+                        <h:link outcome="editTrasa" value="Edit">
+                            <f:param name="custId" value="#{t.id_Trasa}"/>
+                        </h:link>
+                    </h:column>
+                </h:dataTable>
+                </c:if>
+                
+                   <a href="addTrasa.xhtml" class="w3-button w3-block w3-theme-d2">Přidat záznam</a>
+                  
+                
+            </div>
+
+
+
+    </ui:define>
+</ui:composition>
+
+
+
+    </h:body>
+</html>

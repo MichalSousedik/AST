@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Přidat Výjezd</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templateDispecer.xhtml">
+            <ui:define name="content">
+
+                <h2 class="w3-center w3-text-theme">Přidat Výjezd</h2>
+                <h:form class="w3-container">
+                    <label class="w3-text-theme"><b>Technik</b></label>
+                    <h:selectOneMenu value="#{addVyjezd.technik}" class="w3-select w3-border" converter="#{technikConverterBean}">
+                        <c:forEach var="technik" items="#{loginTechnik.technik}">
+                            <f:selectItem itemValue="#{technik}" itemLabel="#{technik.prezdivka}" />
+                        </c:forEach> 
+
+                    </h:selectOneMenu>   
+                    <label class="w3-text-theme"><b>Město</b></label> 
+                    <h:selectOneMenu value="#{addVyjezd.mesto}" class="w3-select w3-border" converter="#{categoryConverterBean}">
+                        <c:forEach var="city" items="#{indexMesto.mesto}">
+                            <f:selectItem itemValue="#{city}" itemLabel="#{city.nazev}" />
+                        </c:forEach> 
+                    </h:selectOneMenu>   
+
+
+                    <label class="w3-text-theme"><b>Zákazník</b></label>
+                    <h:inputText id="zakaznik" value="#{addVyjezd.zakaznik}"
+                                 required="true"
+                                 requiredMessage="empty"
+                                 class="w3-input w3-border ">
+                    </h:inputText>
+
+                    <label class="w3-text-theme"><b>Popis</b></label>
+                    <h:inputText id="popis" value="#{addVyjezd.popis}"
+                                 required="true"
+                                 requiredMessage="empty"
+                                 class="w3-input w3-border ">
+                    </h:inputText>
+                    <label class="w3-text-theme"><b>Hodina</b></label>
+                    <br></br>
+                    <p:spinner min="0" max="23" value="#{addVyjezd.cas}"/>
+                    <br></br>
+                    
+                    <h:message for="name" style="color: red"/>
+                    <h:commandButton value="Přidat záznam" action="#{addVyjezd.add(makeSession.dispecer)}" class="w3-btn w3-theme-d2" style="margin-top:0.5em"/>
+                    <h:button value="Zpět"  class="w3-btn w3-theme-d2" style="margin-top:0.5em; margin-left:0.5em" outcome="indexVyjezd.xhtml"/>
+                </h:form>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

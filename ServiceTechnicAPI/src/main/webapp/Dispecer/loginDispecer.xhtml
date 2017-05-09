@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="../template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+        <h2 class="w3-text-theme w3-center">Dispečeři</h2>
+            <c:set var="count" scope="session" value="${0}"/>
+            <c:forEach var="dispecer" items="#{loginDispecer.dispecer}">
+                <c:if test="${(count mod 4) == 0}">
+                    <br></br>
+                </c:if>
+                <div class="w3-panel w3-center  w3-cell w3-quarter">
+                    <div class="w3-card-4 ">
+                        <header class="w3-container w3-light-grey">
+                            <h3>#{dispecer.prezdivka}</h3>
+                        </header>
+                        <div class="w3-container">
+                            <p>#{dispecer.jmeno} #{dispecer.prijmeni}</p>
+                            <hr></hr>
+
+                            <br></br>
+                        </div>
+                        <h:form>
+                        <h:commandButton class="w3-button w3-block w3-dark-grey" value="Přihlásit" action="#{makeSession.doLogin(dispecer)}"></h:commandButton>
+                        </h:form>
+                       <!-- <h:link outcome="indexDispecer" class="w3-button w3-block w3-dark-grey" >
+                        </h:link>-->
+                    </div>
+
+                </div>
+                <c:set var="count" scope="session" value="${count=count+1}"/>
+            </c:forEach>
+             <a href="registerDispecer.xhtml" class="w3-button w3-block w3-theme-d2">Registrovat</a>
+             <a style="margin-top: 1em" href="../index.xhtml" class="w3-button w3-block w3-theme-d2">Zpět</a>
+    </ui:define>
+</ui:composition>
+
+

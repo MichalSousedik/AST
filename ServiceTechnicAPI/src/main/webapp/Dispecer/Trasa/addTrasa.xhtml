@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Přidat Trasu</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templateDispecer.xhtml">
+            <ui:define name="content">
+
+                <h2 class="w3-center w3-text-theme">Přidat Trasu</h2>
+
+                <h:form class="w3-container">
+                    <label class="w3-text-theme"><b>Start</b></label>
+                    <h:selectOneMenu value="#{addTrasa.start}" class="w3-select w3-border" converter="#{categoryConverterBean}">
+                        <c:forEach var="city" items="#{indexMesto.mesto}">
+                            <f:selectItem itemValue="#{city}" itemLabel="#{city.nazev}" />
+                        </c:forEach> 
+             
+                    </h:selectOneMenu>   
+                     <label class="w3-text-theme"><b>Cíl</b></label>
+                    <h:selectOneMenu value="#{addTrasa.cil}" class="w3-select w3-border" converter="#{categoryConverterBean}">
+                        <c:forEach var="city" items="#{indexMesto.mesto}">
+                            <f:selectItem itemValue="#{city}" itemLabel="#{city.nazev}" />
+                        </c:forEach> 
+                    </h:selectOneMenu>   
+
+
+                    <label class="w3-text-theme"><b>Čas</b></label>
+                    <h:inputText id="name" value="#{addTrasa.cas}"
+                                 required="true"
+                                 requiredMessage="empty"
+                                 class="w3-input w3-border ">
+                    </h:inputText>
+
+                    <h:message for="name" style="color: red"/>
+                    <h:commandButton value="Přidat záznam" action="#{addTrasa.add()}" class="w3-btn w3-theme-d2" style="margin-top:0.5em"/>
+                    <h:button value="Zpět"  class="w3-btn w3-theme-d2" style="margin-top:0.5em; margin-left:0.5em" outcome="indexTrasa.xhtml"/>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Smazat město</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templateDispecer.xhtml">
+            <ui:define name="content">
+
+
+                <f:metadata>
+                    <f:viewParam name="custId" value="#{deleteMesto.mestoId}"/>
+                </f:metadata>
+                <h2 class="w3-center w3-text-theme">Smazat město</h2>
+                <div class="w3-panel w3-center w3-text-theme">
+                    <p>Id: #{deleteMesto.mestoId}</p>
+                  <p>Název: #{deleteMesto.name}</p>
+     
+                </div>
+                <h:form>
+                    <div class="w3-panel w3-center ">
+                        <h:commandButton value="Smazat"  class="w3-btn w3-theme-d2" action="#{deleteMesto.delete}">
+                            <f:param name="custId" value="#{deleteMesto.mestoId}"/>
+                        </h:commandButton>
+                        <h:button value="Zpět"  class="w3-btn w3-theme-d2" style="margin-left:1em" outcome="indexMesto.xhtml"/>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

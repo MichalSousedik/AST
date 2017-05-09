@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="templateTechnik.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+
+
+        <div class="w3-panel w3-center w3-margin">
+
+            <h:form class="w3-container">
+                <label class="w3-text-theme"><b>Kde se nacházíte?</b></label>
+                <h:selectOneMenu value="#{navigate.start}" class="w3-select w3-border" converter="#{categoryConverterBean}" >
+                    <c:forEach var="city" items="#{indexMesto.mesto}">
+                        <f:selectItem itemValue="#{city}" itemLabel="#{city.nazev}" />
+                    </c:forEach> 
+
+
+
+
+                </h:selectOneMenu>  
+                
+                <h:commandButton value="Navigovat" action="#{navigate.navigate(indexVyjezd.getTechnikVyjezd(loginTechnik.tech))}" class="w3-btn w3-theme-d2" style="margin-top:0.5em"/>
+            </h:form>
+
+        </div>  
+
+
+
+    </ui:define>
+</ui:composition>
+
+
